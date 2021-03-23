@@ -1,0 +1,4 @@
+student          id,name,class,section,shift,branch,email
+feedback         id,studentid,staffid,complain,shift,branch,date
+staff            id,name,designation,shift,branch,email
+
