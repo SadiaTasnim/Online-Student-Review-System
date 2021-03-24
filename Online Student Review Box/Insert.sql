@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON;
 SET VERIFY OFF;
----------package created for insert in Sttudent and Employee
+---------package created for insert in Student and Employee
 CREATE OR REPLACE PACKAGE InsertCite1 AS
 	PROCEDURE Insert_Student;
 	PROCEDURE Insert_Employee;
@@ -28,7 +28,7 @@ CREATE OR REPLACE PACKAGE BODY InsertCite1 AS
 		SELECT COUNT(*) INTO row_no FROM Student;
 		student_id := 'M' || TO_CHAR(row_no+1);
 		branch := 'Motijheel' ;
-	    DBMS_OUTPUT.PUT_LINE('Student');
+	    --DBMS_OUTPUT.PUT_LINE('Student');
         INSERT INTO Student VALUES(student_id,roll,name,class_,sec,shift,branch,email);
 	END Insert_Student;
 	
@@ -50,7 +50,7 @@ CREATE OR REPLACE PACKAGE BODY InsertCite1 AS
 		employee_id := 'M' || TO_CHAR(row_no_+1);
 		emp_branch := 'Motijheel' ;
         INSERT INTO Employee VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email);
-		DBMS_OUTPUT.PUT_LINE('Employee');
+		--DBMS_OUTPUT.PUT_LINE('Employee');
 	END Insert_Employee;
 
 
