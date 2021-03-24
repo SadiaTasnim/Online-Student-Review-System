@@ -1,4 +1,23 @@
-student          id,name,class,section,shift,branch,email
-feedback         id,studentid,staffid,complain,shift,branch,date
-staff            id,name,designation,shift,branch,email
+student            id,roll,name,class,section,shift,branch,email
+employee           id,name,designation,shift,branch,email
+feedback_details   id,std_roll,std_class,std_sec,emp_id,branch,date
+feedback           id,review
 
+student info insert ---per site
+employee info insert ---per site
+
+see employee id   ---from all site
+
+feedback insert ---per site --insert into feedback_details and feedback
+
+see feedback----cite1
+-----------------------------------------------
+-----------------------------------------------
+
+from cite 1
+see all student info
+see all staff info
+see all feedback----------canteen,library,office manage ment
+                ----------give feedback id
+                ----------see all info of the staff and student
+         
