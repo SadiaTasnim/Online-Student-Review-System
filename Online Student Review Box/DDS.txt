@@ -5,12 +5,16 @@ feedback           id,review
 
 student info insert ---per site
 employee info insert ---per site
+feedback insert-----per site
+
+
+student info Delete ---per site 
+employee info Delete ---per site 
+feedback Delete-----per site 
+
 
 see employee id   ---from all site
 
-feedback insert ---per site --insert into feedback_details and feedback
-
-see feedback----cite1
 -----------------------------------------------
 -----------------------------------------------
 
