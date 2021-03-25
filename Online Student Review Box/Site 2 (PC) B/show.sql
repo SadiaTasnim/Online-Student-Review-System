@@ -28,8 +28,6 @@ ON  All_Feedback_Details.FeedbackID = All_Feedback.FeedbackID;
 
 
 
-
-
 SELECT * FROM All_Student;
 SELECT * FROM All_Employee;
 SELECT * FROM All_Feedback_Details;

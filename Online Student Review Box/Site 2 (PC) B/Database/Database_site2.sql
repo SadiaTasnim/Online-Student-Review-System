@@ -138,7 +138,7 @@ INSERT INTO Feedback VALUES('B11','Some benches in room 407 were broken');
 INSERT INTO Feedback VALUES('B12','Bencher in room 506 need some repairing');
 INSERT INTO Feedback VALUES('B13','A red notebook was look in the library');
 INSERT INTO Feedback VALUES('B14','Please inform me if any moneybag was found in the library');
-INSERT INTO Feedback VALUES('B15','My Bangla book lost near office room');
+INSERT INTO Feedback VALUES('B15','My bangla book lost near office room');
 INSERT INTO Feedback VALUES('B16','A calculator was lost in the computer lab');
 INSERT INTO Feedback VALUES('B17','I lost my compas box in the library');
 INSERT INTO Feedback VALUES('B18','A fan in room 403 was not working');

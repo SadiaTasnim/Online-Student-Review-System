@@ -7,7 +7,7 @@ student info insert ---per site and other
 employee info insert ---per site and other
 feedback insert-----per site and other
 
-
+****delete or insert from view 
 student info Delete ---per site and other
 employee info Delete ---per site and other
 feedback Delete-----per site and other
@@ -21,7 +21,7 @@ see employee id   ---from all site
 from cite 1
 see all student info
 see all staff info
-see all feedback----------canteen,library,office manage ment
+see all feedback----------canteen,library,office management
                 ----------give feedback id
                 ----------see all info of the staff and student
          
