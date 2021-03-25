@@ -3,14 +3,14 @@ employee           id,name,designation,shift,branch,email
 feedback_details   id,std_roll,std_class,std_sec,emp_id,branch,date
 feedback           id,review
 
-student info insert ---per site
-employee info insert ---per site
-feedback insert-----per site
+student info insert ---per site and other
+employee info insert ---per site and other
+feedback insert-----per site and other
 
 
-student info Delete ---per site 
-employee info Delete ---per site 
-feedback Delete-----per site 
+student info Delete ---per site and other
+employee info Delete ---per site and other
+feedback Delete-----per site and other
 
 
 see employee id   ---from all site

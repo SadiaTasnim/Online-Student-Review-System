@@ -1,14 +1,14 @@
 SET SERVEROUTPUT ON;
 SET VERIFY OFF;
 ---------package created to delete from Student and Employee
-CREATE OR REPLACE PACKAGE UpdateCite1 AS
+CREATE OR REPLACE PACKAGE UpdateSite2 AS
 	PROCEDURE Update_Student(student_id IN Student.StudentID%TYPE);
 	PROCEDURE Update_Employee(employee_id IN Employee.EmployeeID%TYPE);
-END UpdateCite1;
+END UpdateSite2;
 /
 
 ---------Created package body
-CREATE OR REPLACE PACKAGE BODY UpdateCite1 AS
+CREATE OR REPLACE PACKAGE BODY UpdateSite2 AS
 	
     ----procedure for delete in student table
 	
@@ -31,7 +31,7 @@ CREATE OR REPLACE PACKAGE BODY UpdateCite1 AS
 	
 
 
-END UpdateCite1;
+END UpdateSite2;
 /
 
 -------main
@@ -39,8 +39,8 @@ END UpdateCite1;
 DECLARE
 	
 BEGIN
-	UpdateCite1.Update_Student('M20');
-	UpdateCite1.Update_Employee('M20');
+	UpdateSite2.Update_Student('M20');
+	UpdateSite2.Update_Employee('M20');
 
 END;
 /

@@ -1,15 +1,17 @@
 SET SERVEROUTPUT ON;
 SET VERIFY OFF;
+SET linesize 200;
+SET pagesize 200;
 ---------package created to delete from Student and Employee
-CREATE OR REPLACE PACKAGE DeleteCite1 AS
+CREATE OR REPLACE PACKAGE DeleteSite2 AS
 	PROCEDURE Delete_Student(student_id IN Student.StudentID%TYPE);
 	PROCEDURE Delete_Employee(employee_id IN Employee.EmployeeID%TYPE);
 	PROCEDURE Delete_Feedback(feedback_id IN Feedback_Details.FeedbackID%TYPE);
-END DeleteCite1;
+END DeleteSite2;
 /
 
 ---------Created package body
-CREATE OR REPLACE PACKAGE BODY DeleteCite1 AS
+CREATE OR REPLACE PACKAGE BODY DeleteSite2 AS
 	
     ----procedure for delete in student table
 	
@@ -40,7 +42,7 @@ CREATE OR REPLACE PACKAGE BODY DeleteCite1 AS
 		Delete from Feedback_Details where FeedbackID = feedback_id ;
 	END Delete_Feedback;
 
-END DeleteCite1;
+END DeleteSite2;
 /
 
 -------main
@@ -48,8 +50,8 @@ END DeleteCite1;
 DECLARE
 	
 BEGIN
-	DeleteCite1.Delete_Student('M20');
-	DeleteCite1.Delete_Employee('M20');
-	DeleteCite1.Delete_Feedback('M21');
+	DeleteSite2.Delete_Student('M20');
+	DeleteSite2.Delete_Employee('M20');
+	DeleteSite2.Delete_Feedback('M21');
 END;
 /
