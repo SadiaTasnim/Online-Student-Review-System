@@ -5,19 +5,19 @@ SET pagesize 200;
 
 /*Student Table*/
 CREATE OR REPLACE VIEW All_Student AS
-SELECT * FROM Student UNION  SELECT * FROM Student@Site1;
+SELECT * FROM Student UNION  SELECT * FROM Student@Site2;
 
 ---------package created for insert in Student and Employee
-CREATE OR REPLACE PACKAGE UpdateSite2 AS
+CREATE OR REPLACE PACKAGE UpdateSite1 AS
 	PROCEDURE Update_Student(student_id IN Student.StudentID%TYPE,roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
 							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
 							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
 							email IN Student.Std_Email%TYPE);
-END UpdateSite2;
+END UpdateSite1;
 /
 
 ---------Created package body
-CREATE OR REPLACE PACKAGE BODY UpdateSite2 AS
+CREATE OR REPLACE PACKAGE BODY UpdateSite1 AS
 	
     ----function to insert in student table
 	
@@ -31,12 +31,12 @@ CREATE OR REPLACE PACKAGE BODY UpdateSite2 AS
 	BEGIN
 		
 	   SELECT COUNT(StudentID) INTO row_no FROM Student WHERE StudentID = student_id ;
-	   SELECT COUNT(StudentID) INTO row_no2 FROM Student@Site1 WHERE StudentID = student_id;
+	   SELECT COUNT(StudentID) INTO row_no2 FROM Student@Site2 WHERE StudentID = student_id;
 	   IF row_no > 0 THEN
 			UPDATE Student SET std_ClassRoll = roll, Std_Name = name, Std_Class= class_ ,Std_Section=sec,
             Std_Email=email WHERE StudentID = student_id;
 	   ELSIF row_no2 >0 THEN
-			UPDATE Student@Site1 SET std_ClassRoll = roll, Std_Name = name, Std_Class= class_ ,Std_Section=sec,
+			UPDATE Student@Site2 SET std_ClassRoll = roll, Std_Name = name, Std_Class= class_ ,Std_Section=sec,
             Std_Email=email WHERE StudentID = student_id;
 	   ELSE
 	        DBMS_OUTPUT.PUT_LINE(CHR(13)||CHR(13));
@@ -46,7 +46,7 @@ CREATE OR REPLACE PACKAGE BODY UpdateSite2 AS
 	   END IF;
 	END Update_Student;
 
-END UpdateSite2;
+END UpdateSite1;
 /
 
 
@@ -102,7 +102,7 @@ BEGIN
 	roll := TO_NUMBER(input_roll);
 	class_ := TO_NUMBER(input_class);
 	
-	UpdateSite2.Update_Student(student_id,roll,INITCAP(name),class_,UPPER(sec),INITCAP(shift),INITCAP(branch),email);
+	UpdateSite1.Update_Student(student_id,roll,INITCAP(name),class_,UPPER(sec),INITCAP(shift),INITCAP(branch),email);
 	
 	EXCEPTION
 		WHEN VALUE_ERROR THEN

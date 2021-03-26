@@ -46,7 +46,4 @@ END;
 
 --SELECT * FROM Student UNION  SELECT * FROM Student@Site1;
 
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\Insert\Functions_And_packages.sql"
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\trigger.sql"
-
 commit;

@@ -37,11 +37,14 @@ BEGIN
 	/*Check if class and roll is integer or not*/
 	feedback_std_roll := TO_NUMBER(input_roll);
 	feedback_std_class := TO_NUMBER(input_class);
-	
+	DBMS_OUTPUT.PUT_LINE(feedback_std_class);
+	DBMS_OUTPUT.PUT_LINE(feedback_std_roll);
+	DBMS_OUTPUT.PUT_LINE(feedback_std_sec);
+	DBMS_OUTPUT.PUT_LINE(feedback_std_branch);
 	/* Check if the student if in database or not */
 	SELECT COUNT(*) INTO row_no FROM All_Student where std_ClassRoll = feedback_std_roll AND Std_Class = feedback_std_class AND
-                                                       Std_Section = feedback_std_sec AND Std_Branch = feedback_std_branch ;
-	
+                                                       Std_Section = UPPER(feedback_std_sec)AND Std_Branch = feedback_std_branch ;
+	DBMS_OUTPUT.PUT_LINE(row_no);
 	IF row_no >0 THEN 
 	  InsertSite2.Insert_Feedback(feedback_std_roll,feedback_std_class,UPPER(feedback_std_sec),UPPER(feedback_emp_id),INITCAP(feedback_std_branch),feedback_review);
     ELSE
@@ -62,6 +65,4 @@ END;
 
 --SELECT * FROM Feedback UNION  SELECT * FROM Feedback@Site1;
 
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\Insert\Functions_And_packages.sql"
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\trigger.sql"
 commit;

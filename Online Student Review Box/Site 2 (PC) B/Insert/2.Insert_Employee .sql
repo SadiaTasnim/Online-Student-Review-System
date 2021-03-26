@@ -30,6 +30,4 @@ END;
 
 --SELECT * FROM Employee UNION  SELECT * FROM Employee@Site1;
 
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\Insert\Functions_And_packages.sql"
-@"F:\GITHUB\Online-Student-Review-System\Online Student Review Box\Site 2 (PC) B\trigger.sql"
 commit;

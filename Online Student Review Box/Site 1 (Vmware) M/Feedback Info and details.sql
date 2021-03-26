@@ -5,20 +5,20 @@ SET pagesize 200;
 
 /*Student Table*/
 CREATE OR REPLACE VIEW All_Student AS
-SELECT * FROM Student UNION  SELECT * FROM Student@Site1;
+SELECT * FROM Student UNION  SELECT * FROM Student@Site2;
 
 /*Employee Table*/
 CREATE OR REPLACE VIEW All_Employee AS
-SELECT * FROM Employee UNION  SELECT * FROM Employee@Site1;
+SELECT * FROM Employee UNION  SELECT * FROM Employee@Site2;
 
 
 /*Feedback Table */
 
 CREATE OR REPLACE VIEW All_Feedback_Details AS
-SELECT * FROM Feedback_Details UNION  SELECT * FROM Feedback_Details@Site1;
+SELECT * FROM Feedback_Details UNION  SELECT * FROM Feedback_Details@Site2;
 
 CREATE OR REPLACE VIEW All_Feedback AS
-SELECT * FROM Feedback UNION  SELECT * FROM Feedback@Site1;
+SELECT * FROM Feedback UNION  SELECT * FROM Feedback@Site2;
 
 
 /* Show all feedback with id and employee id */
