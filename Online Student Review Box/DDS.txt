@@ -3,11 +3,11 @@ employee           id,name,designation,shift,branch,email
 feedback_details   id,std_roll,std_class,std_sec,emp_id,branch,date
 feedback           id,review
 
-student info insert ---per site and other
-employee info insert ---per site and other
-feedback insert-----per site and other
+student info insert ---per site and other     *branch name totally vul or * not register student
+employee info insert ---per site and other    *branch banan vul/capital letter problem
+feedback insert-----per site and other        *class roll integer problem
 
-****delete or insert from view 
+
 student info Delete ---per site and other
 employee info Delete ---per site and other
 feedback Delete-----per site and other

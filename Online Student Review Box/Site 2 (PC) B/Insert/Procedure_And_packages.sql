@@ -4,29 +4,33 @@ SET linesize 200;
 SET pagesize 200;
 ---------package created for insert in Student and Employee
 CREATE OR REPLACE PACKAGE InsertSite2 AS
-	PROCEDURE Insert_Student;
-	PROCEDURE Insert_Employee;
-	PROCEDURE Insert_Feedback;
+	PROCEDURE Insert_Student(roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
+							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
+							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
+							email IN Student.Std_Email%TYPE);
+							
+	PROCEDURE Insert_Employee(emp_name IN Employee.Emp_Name%TYPE ,designation IN Employee.Emp_Designation%TYPE ,
+                           	 emp_shift IN Employee.Emp_Shift%TYPE ,emp_branch IN Employee.Emp_Branch%TYPE ,
+	                         emp_email IN Employee.Emp_Email%TYPE);
+							 
+	PROCEDURE Insert_Feedback(feedback_std_roll IN Feedback_Details.std_ClassRoll%TYPE ,feedback_std_class IN Feedback_Details.Std_Class%TYPE ,
+	                          feedback_std_sec IN Feedback_Details.Std_Section%TYPE ,feedback_emp_id  IN Feedback_Details.EmployeeID%TYPE ,
+	                          feedback_std_branch  IN Feedback_Details.Branch%TYPE ,feedback_review IN Feedback.Review%TYPE);
 END InsertSite2;
 /
 
 ---------Created package body
 CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 	
-    ----procedure for insert in student table
+    ----function to insert in student table
 	
-	PROCEDURE Insert_Student
+	PROCEDURE Insert_Student(roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
+							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
+							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
+							email IN Student.Std_Email%TYPE)
 	IS
 	student_id   Student.StudentID%TYPE ;
-	roll         Student.std_ClassRoll%TYPE := &roll;
-	name         Student.Std_Name%TYPE := '&Name';
-	class_       Student.Std_Class%TYPE := &Class_;
-	sec          Student.Std_Section%TYPE := '&Section' ;
-	shift        Student.Std_Shift%TYPE := '&Shift';
-	branch       Student.Std_Branch%TYPE := '&Branch';
-	email        Student.Std_Email%TYPE := '&Email'; 
 	row_no INT ;
-	
 	BEGIN
 		IF branch = 'Banasree' THEN
 		    SELECT COUNT(*) INTO row_no FROM Student;
@@ -37,25 +41,19 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    SELECT COUNT(*) INTO row_no FROM Student@site1;
 		    student_id := 'M' || TO_CHAR(row_no+1);
             INSERT INTO Student@site1 VALUES(student_id,roll,name,class_,sec,shift,branch,email);
-			
-		ELSE
-		    DBMS_OUTPUT.PUT_LINE('Branch Name Incorrect');
         END IF;	
 	
 	END Insert_Student;
 	
 
 	
-	----procedure for insert in Employee table
+	----procedure to insert in Employee table
 	
-	PROCEDURE Insert_Employee
+	PROCEDURE Insert_Employee(emp_name IN Employee.Emp_Name%TYPE ,designation IN Employee.Emp_Designation%TYPE ,
+                           	 emp_shift IN Employee.Emp_Shift%TYPE ,emp_branch IN Employee.Emp_Branch%TYPE ,
+	                         emp_email IN Employee.Emp_Email%TYPE)
 	IS
-	employee_id        Employee.EmployeeID%TYPE ;
-	emp_name           Employee.Emp_Name%TYPE :='&Name';
-	designation        Employee.Emp_Designation%TYPE :='&Designation' ;
-	emp_shift          Employee.Emp_Shift%TYPE :='&Shift';
-	emp_branch         Employee.Emp_Branch%TYPE :='&Branch';
-	emp_email          Employee.Emp_Email%TYPE :='&Email' ;
+	employee_id  Employee.EmployeeID%TYPE ;
 	row_no INT ;
 	BEGIN
 		IF emp_branch = 'Banasree' THEN
@@ -67,25 +65,20 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    SELECT COUNT(*) INTO row_no FROM Employee@site1;
 		    employee_id := 'M' || TO_CHAR(row_no+1);
             INSERT INTO Employee@site1 VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email); 
-		ELSE
-		    DBMS_OUTPUT.PUT_LINE('Branch Name Incorrect');  
+	
         END IF; 
 		
 	END Insert_Employee;
 	
 	
-	----procedure for insert Feedback
+	----procedure to insert Feedback
 	
-	PROCEDURE Insert_Feedback
+	PROCEDURE Insert_Feedback(feedback_std_roll IN Feedback_Details.std_ClassRoll%TYPE ,feedback_std_class IN Feedback_Details.Std_Class%TYPE ,
+	                          feedback_std_sec IN Feedback_Details.Std_Section%TYPE ,feedback_emp_id  IN Feedback_Details.EmployeeID%TYPE ,
+	                          feedback_std_branch  IN Feedback_Details.Branch%TYPE ,feedback_review IN Feedback.Review%TYPE)
 	IS
-	feedback_id           Feedback_Details.FeedbackID%TYPE ;
-	feedback_std_roll     Feedback_Details.std_ClassRoll%TYPE :='&Roll';
-	feedback_std_class    Feedback_Details.Std_Class%TYPE :='&Class' ;
-	feedback_std_sec      Feedback_Details.Std_Section%TYPE :='&Section';
-	feedback_emp_id       Feedback_Details.EmployeeID%TYPE :='&Employee_ID';
-	feedback_std_branch   Feedback_Details.Branch%TYPE :='&Branch';
-	feedback_date         Feedback_Details.Date_%TYPE ;
-	feedback_review       Feedback.Review%TYPE :='&Review';
+	feedback_id     Feedback_Details.FeedbackID%TYPE ;
+	feedback_date   Feedback_Details.Date_%TYPE ;
 	row_no INT ;
 	BEGIN	
 		select sysdate into feedback_date from dual;
@@ -102,8 +95,6 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 			INSERT INTO Feedback_Details@site1 VALUES(feedback_id,feedback_std_roll,feedback_std_class,feedback_std_sec,feedback_emp_id,feedback_std_branch,feedback_date);
 		    INSERT INTO Feedback@site1 VALUES(feedback_id,feedback_review);
             
-		ELSE
-		    DBMS_OUTPUT.PUT_LINE('Branch Name Incorrect');
         END IF;			
 	END Insert_Feedback;
 
@@ -111,13 +102,4 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 END InsertSite2;
 /
 
--------main
 
-DECLARE
-	
-BEGIN
-	InsertSite2.Insert_Student;
-	InsertSite2.Insert_Employee;
-	InsertSite2.Insert_Feedback;
-END;
-/
