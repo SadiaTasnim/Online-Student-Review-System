@@ -2,22 +2,19 @@ SET SERVEROUTPUT ON;
 SET VERIFY OFF;
 select * from Employee;
 
-
 CREATE OR REPLACE VIEW All_Employee AS
 SELECT * FROM Employee UNION  SELECT * FROM Employee@Site1;
 
 
-
+/*Package*/
 CREATE OR REPLACE PACKAGE show_employee_Id AS
 	PROCEDURE show_Employee;
 END show_employee_Id;
 /
 
+/*Package Body*/
 
 CREATE OR REPLACE PACKAGE BODY show_employee_Id AS
-	
-
-	
 	PROCEDURE show_Employee
 	IS
 	employee_id        Employee.EmployeeID%TYPE ;
@@ -39,12 +36,8 @@ CREATE OR REPLACE PACKAGE BODY show_employee_Id AS
 		
 	END show_Employee;
 	
-
-
 END show_employee_Id;
 /
-
-
 DECLARE
 BEGIN
    show_employee_Id.show_Employee;

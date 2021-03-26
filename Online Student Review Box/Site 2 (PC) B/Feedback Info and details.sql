@@ -26,7 +26,7 @@ SELECT * FROM Feedback UNION  SELECT * FROM Feedback@Site1;
 CREATE OR REPLACE VIEW Final_Feedback AS
 SELECT All_Feedback_Details.FeedbackID, All_Feedback_Details.EmployeeID,All_Feedback_Details.Date_,
        All_Feedback_Details.std_ClassRoll,All_Feedback_Details.Std_Class,
-	   All_Feedback_Details.Std_Section,All_Feedback_Details.Branch,All_Feedback.Review;
+	   All_Feedback_Details.Std_Section,All_Feedback_Details.Branch,All_Feedback.Review
 FROM All_Feedback_Details JOIN All_Feedback
 ON  All_Feedback_Details.FeedbackID = All_Feedback.FeedbackID;
 
@@ -56,7 +56,7 @@ BEGIN
 											     Date_ LIKE '%' ||UPPER(feedback_date)|| '%' AND 
 												 Review LIKE '%' ||LOWER (feedback_review)|| '%'  )
 												 LOOP
-	     	DBMS_OUTPUT.PUT_LINE('----------------------');
+	     	DBMS_OUTPUT.PUT_LINE('---------------------');
 			DBMS_OUTPUT.PUT_LINE('Feedback ID :  ' || R.FeedbackID);
 			DBMS_OUTPUT.PUT_LINE('Employee ID :  ' || R.EmployeeID);
 			DBMS_OUTPUT.PUT_LINE('Date        :  ' || R.Date_);
@@ -93,7 +93,8 @@ DECLARE
 	feedback_review_      Feedback.Review%TYPE ;
 	feedback_student_id   Student.StudentID%TYPE ;
 	
-BEGIN
+BEGIN  
+       feedback_id_ := UPPER(feedback_id_);
 	   Select std_ClassRoll,std_Class,Std_Section,Branch,EmployeeID,Review,Date_ into
 	   feedback_std_roll_,feedback_std_class_ ,feedback_std_sec_,feedback_std_branch_,feedback_emp_id_,feedback_review_,feedback_date_ from
 	   Final_Feedback WHERE FeedbackID = feedback_id_ ;
@@ -134,7 +135,12 @@ BEGIN
 	        DBMS_OUTPUT.PUT_LINE('----------------------');
 	        DBMS_OUTPUT.PUT_LINE('Review        :  ' ||feedback_review_);
 			DBMS_OUTPUT.PUT_LINE('Date          :  ' ||feedback_date_);
-			
+		EXCEPTION
+		WHEN NO_DATA_FOUND THEN
+		    DBMS_OUTPUT.PUT_LINE(CHR(13)||CHR(13));
+		    DBMS_OUTPUT.PUT_LINE('----------------------------------');
+			DBMS_OUTPUT.PUT_LINE('Please Enter a valid ID');
+			DBMS_OUTPUT.PUT_LINE('----------------------------------');
 
 	
 END;

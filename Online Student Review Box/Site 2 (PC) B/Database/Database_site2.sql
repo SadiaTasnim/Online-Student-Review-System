@@ -38,7 +38,7 @@ CREATE TABLE Feedback_Details
     Std_Section varchar(5),
 	EmployeeID varchar(10),
 	Branch varchar(10),
-    Date_ varchar(20),
+    Date_ Date,
         PRIMARY KEY (FeedbackID)
 );
 CREATE TABLE Feedback
@@ -50,15 +50,15 @@ CREATE TABLE Feedback
 
 /* Value insert in Student Table*/
 
-INSERT INTO Student VALUES('B1',1,'Raisa Ramisa',8,'C','Morning','Banasree','ramisa221@gmail.com');
-INSERT INTO Student VALUES('B2',2,'Nowshin Ibnat',8,'C','Morning','Banasree','ibnatnowshin@gmail.com');
-INSERT INTO Student VALUES('B3',3,'Talvia Pranti',8,'C','Morning','Banasree','prantirahman@gmail.com');
-INSERT INTO Student VALUES('B4',4,'Raylah Marjia',8,'C','Morning','Banasree','marjia@gmail.com');
-INSERT INTO Student VALUES('B5',5,'Tanjina Tumpa',8,'C','Morning','Banasree','tumpa_222@gmail.com');
-INSERT INTO Student VALUES('B6',6,'Nishat Tasnim',8,'C','Morning','Banasree','tasnima294@gmail.com');
-INSERT INTO Student VALUES('B7',7,'Maliha Mim',8,'C','Morning','Banasree','minrahman@gmail.com');
-INSERT INTO Student VALUES('B8',8,'Jannatul Tasnim',8,'C','Morning','Banasree','jannatultasnim@gmail.com');
-INSERT INTO Student VALUES('B9',9,'Jannatul Mim',8,'C','Morning','Banasree','mim234tasnim@gmail.com');
+INSERT INTO Student VALUES('B01',1,'Raisa Ramisa',8,'C','Morning','Banasree','ramisa221@gmail.com');
+INSERT INTO Student VALUES('B02',2,'Nowshin Ibnat',8,'C','Morning','Banasree','ibnatnowshin@gmail.com');
+INSERT INTO Student VALUES('B03',3,'Talvia Pranti',8,'C','Morning','Banasree','prantirahman@gmail.com');
+INSERT INTO Student VALUES('B04',4,'Raylah Marjia',8,'C','Morning','Banasree','marjia@gmail.com');
+INSERT INTO Student VALUES('B05',5,'Tanjina Tumpa',8,'C','Morning','Banasree','tumpa_222@gmail.com');
+INSERT INTO Student VALUES('B06',6,'Nishat Tasnim',8,'C','Morning','Banasree','tasnima294@gmail.com');
+INSERT INTO Student VALUES('B07',7,'Maliha Mim',8,'C','Morning','Banasree','minrahman@gmail.com');
+INSERT INTO Student VALUES('B08',8,'Jannatul Tasnim',8,'C','Morning','Banasree','jannatultasnim@gmail.com');
+INSERT INTO Student VALUES('B09',9,'Jannatul Mim',8,'C','Morning','Banasree','mim234tasnim@gmail.com');
 INSERT INTO Student VALUES('B10',10,'Jannatul Ananna',8,'C','Morning','Banasree','anannan@gmail.com');
 INSERT INTO Student VALUES('B11',11,'Khandakar Arif',7,'A','Day','Banasree','arafifkhan@gmail.com');
 INSERT INTO Student VALUES('B12',12,'Alif Mim',7,'A','Day','Banasree','Alifmim@gmail.com');
@@ -73,15 +73,15 @@ INSERT INTO Student VALUES('B20',20,'Mahmudur Rahman',7,'A','Day','Banasree','ma
 
 /* Value insert in Employee Table*/
 
-INSERT INTO Employee VALUES('B1','Mojammel Hasan','Teacher','Morning','Banasree','mojammel34@gmail.com');
-INSERT INTO Employee VALUES('B2','Arafat Mojumber','Teacher','Morning','Banasree','arfata_mojum@gmail.com');
-INSERT INTO Employee VALUES('B3','Yaseen Arafat','Teacher','Morning','Banasree','yaseenahmed@gmail.com');
-INSERT INTO Employee VALUES('B4','Rafat Hasmi','Physical Director','Morning','Banasree','rahathasmi@gmail.com');
-INSERT INTO Employee VALUES('B5','Fakhrul Islam','Security Gaurd','Morning','Banasree','fakhrulislam@gmail.com');
-INSERT INTO Employee VALUES('B6','Salam Khan','Headmaster','Morning','Motijheel','salamkhan@gmail.com');
-INSERT INTO Employee VALUES('B7','Abu Jafor','Headmaster','Morning','Motijheel','abujafor290@gmail.com');
-INSERT INTO Employee VALUES('B8','Md. Kamruz zaman','Senior Teacher','Morning','Banasree','kamruzzaman@gmail.com');
-INSERT INTO Employee VALUES('B9','Dr. Shahanara Begum','Principle','Morning','Motijheel','shahanara123@gmail.com');
+INSERT INTO Employee VALUES('B01','Mojammel Hasan','Teacher','Morning','Banasree','mojammel34@gmail.com');
+INSERT INTO Employee VALUES('B02','Arafat Mojumber','Teacher','Morning','Banasree','arfata_mojum@gmail.com');
+INSERT INTO Employee VALUES('B03','Yaseen Arafat','Teacher','Morning','Banasree','yaseenahmed@gmail.com');
+INSERT INTO Employee VALUES('B04','Rafat Hasmi','Physical Director','Morning','Banasree','rahathasmi@gmail.com');
+INSERT INTO Employee VALUES('B05','Fakhrul Islam','Security Gaurd','Morning','Banasree','fakhrulislam@gmail.com');
+INSERT INTO Employee VALUES('B06','Salam Khan','Headmaster','Morning','Motijheel','salamkhan@gmail.com');
+INSERT INTO Employee VALUES('B07','Abu Jafor','Headmaster','Morning','Motijheel','abujafor290@gmail.com');
+INSERT INTO Employee VALUES('B08','Md. Kamruz zaman','Senior Teacher','Morning','Banasree','kamruzzaman@gmail.com');
+INSERT INTO Employee VALUES('B09','Dr. Shahanara Begum','Principle','Morning','Motijheel','shahanara123@gmail.com');
 INSERT INTO Employee VALUES('B10','Abul Kalam Azaz','Senior Teacher','Morning','Banasree','abulazaz_000@gmail.com');
 INSERT INTO Employee VALUES('B11','Golam Mostafa','Senior Teacher','Day','Motijheel','golammostofa291@gmail.com');
 INSERT INTO Employee VALUES('B12','Md Ali Mortuja','Senior Teacher','Day','Motijheel','ali_mortuja_000@gmail.com');
@@ -99,16 +99,16 @@ INSERT INTO Employee VALUES('B20','Jarin Alam','Office Manager','Day','Banasree'
 /* Value insert Feedback_Details Table*/
 
 
-INSERT INTO Feedback_Details VALUES('B1',13,7,'A','B16','Banasree','28-MAR-21');
-INSERT INTO Feedback_Details VALUES('B2',12,7,'A','B16','Banasree','15-JAN-21');
-INSERT INTO Feedback_Details VALUES('B3',6,8,'C','B16','Banasree','13-DEC-20');
-INSERT INTO Feedback_Details VALUES('B4',6,8,'C','B14','Banasree','27-MAR-21');
-INSERT INTO Feedback_Details VALUES('B5',6,8,'C','B16','Banasree','13-FEB-21');
-INSERT INTO Feedback_Details VALUES('B6',10,8,'C','B17','Banasree','11-DEC-20');
-INSERT INTO Feedback_Details VALUES('B7',8,8,'C','B17','Banasree','11-FEB-21');
-INSERT INTO Feedback_Details VALUES('B8',8,8,'C','B18','Banasree','17-DEC-20');
-INSERT INTO Feedback_Details VALUES('B9',9,8,'C','B20','Banasree','28-MAR-21');
-INSERT INTO Feedback_Details VALUES('B10',1,8,'C','B8','Banasree','21-DEC-20');
+INSERT INTO Feedback_Details VALUES('B01',13,7,'A','B16','Banasree','28-MAR-21');
+INSERT INTO Feedback_Details VALUES('B02',12,7,'A','B16','Banasree','15-JAN-21');
+INSERT INTO Feedback_Details VALUES('B03',6,8,'C','B16','Banasree','13-DEC-20');
+INSERT INTO Feedback_Details VALUES('B04',6,8,'C','B14','Banasree','27-MAR-21');
+INSERT INTO Feedback_Details VALUES('B05',6,8,'C','B16','Banasree','13-FEB-21');
+INSERT INTO Feedback_Details VALUES('B06',10,8,'C','B17','Banasree','11-DEC-20');
+INSERT INTO Feedback_Details VALUES('B07',8,8,'C','B17','Banasree','11-FEB-21');
+INSERT INTO Feedback_Details VALUES('B08',8,8,'C','B18','Banasree','17-DEC-20');
+INSERT INTO Feedback_Details VALUES('B09',9,8,'C','B20','Banasree','28-MAR-21');
+INSERT INTO Feedback_Details VALUES('B10',1,8,'C','B08','Banasree','21-DEC-20');
 INSERT INTO Feedback_Details VALUES('B11',2,8,'C','B19','Banasree','24-MAR-21');
 INSERT INTO Feedback_Details VALUES('B12',3,8,'C','B14','Banasree','23-FEB-21');
 INSERT INTO Feedback_Details VALUES('B13',1,8,'C','B17','Banasree','23-MAR-21');
@@ -124,15 +124,15 @@ INSERT INTO Feedback_Details VALUES('B20',16,7,'A','B18','Banasree','2-MAR-21');
 /* Value insert in Feedback Table*/
 
 
-INSERT INTO Feedback VALUES('B1','Room 203 was not clean today');
-INSERT INTO Feedback VALUES('B2','Cupboards of our chemistry lab was not clean.');
-INSERT INTO Feedback VALUES('B3','Black board of room 406 needs cleaning');
-INSERT INTO Feedback VALUES('B4','Room 203 need some new dusters');
-INSERT INTO Feedback VALUES('B5','Lights of the coridor in 3rd floor was not working');
-INSERT INTO Feedback VALUES('B6','Class 8 Math Book was not in the library');
-INSERT INTO Feedback VALUES('B7','Our library needs an updated booklist');
-INSERT INTO Feedback VALUES('B8','I lost 100tk in the canteen today');
-INSERT INTO Feedback VALUES('B9','How I can get my JSC certificate from office room ?');
+INSERT INTO Feedback VALUES('B01','Room 203 was not clean today');
+INSERT INTO Feedback VALUES('B02','Cupboards of our chemistry lab was not clean.');
+INSERT INTO Feedback VALUES('B03','Black board of room 406 needs cleaning');
+INSERT INTO Feedback VALUES('B04','Room 203 need some new dusters');
+INSERT INTO Feedback VALUES('B05','Lights of the coridor in 3rd floor was not working');
+INSERT INTO Feedback VALUES('B06','Class 8 Math Book was not in the library');
+INSERT INTO Feedback VALUES('B07','Our library needs an updated booklist');
+INSERT INTO Feedback VALUES('B08','I lost 100tk in the canteen today');
+INSERT INTO Feedback VALUES('B09','How I can get my JSC certificate from office room ?');
 INSERT INTO Feedback VALUES('B10','My number was counted wrong in CT 3');
 INSERT INTO Feedback VALUES('B11','Some benches in room 407 were broken');
 INSERT INTO Feedback VALUES('B12','Bencher in room 506 need some repairing');

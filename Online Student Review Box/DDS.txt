@@ -9,11 +9,11 @@ feedback insert-----per site and other        *class roll integer problem
 
 
 student info Delete ---per site and other
-employee info Delete ---per site and other
+employee info Delete ---per site and other   **can be deleted from both server and site
 feedback Delete-----per site and other
 
 
-see employee id   ---from all site
+see employee id   ---from all site   ***search by name or designation
 
 -----------------------------------------------
 -----------------------------------------------
@@ -21,7 +21,7 @@ see employee id   ---from all site
 from cite 1
 see all student info
 see all staff info
-see all feedback----------canteen,library,office management
-                ----------give feedback id
-                ----------see all info of the staff and student
+see all feedback according to date----------canteen,library,office management
+                                  ----------give feedback id
+                                  ----------see all info of the staff and student
          
