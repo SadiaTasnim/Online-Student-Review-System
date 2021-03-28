@@ -1,10 +1,10 @@
 SET SERVEROUTPUT ON;
 SET VERIFY OFF;
-select * from Employee;
+
 
 CREATE OR REPLACE VIEW All_Employee AS
 SELECT * FROM Employee UNION  SELECT * FROM Employee@Site1;
-
+select * from All_Employee;
 
 /*Package*/
 CREATE OR REPLACE PACKAGE show_employee_Id AS

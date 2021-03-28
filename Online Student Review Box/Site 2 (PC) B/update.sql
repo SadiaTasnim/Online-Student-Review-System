@@ -11,7 +11,6 @@ SELECT * FROM Student UNION  SELECT * FROM Student@Site1;
 CREATE OR REPLACE PACKAGE UpdateSite2 AS
 	PROCEDURE Update_Student(student_id IN Student.StudentID%TYPE,roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
 							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
-							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
 							email IN Student.Std_Email%TYPE);
 END UpdateSite2;
 /
@@ -23,7 +22,6 @@ CREATE OR REPLACE PACKAGE BODY UpdateSite2 AS
 	
 	PROCEDURE Update_Student(student_id IN Student.StudentID%TYPE,roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
 							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
-							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
 							email IN Student.Std_Email%TYPE)
 	IS
 	row_no INT ;
@@ -89,8 +87,8 @@ DECLARE
 	roll         Student.std_ClassRoll%TYPE;
 	class_       Student.Std_Class%TYPE;
 	sec          Student.Std_Section%TYPE := '&Section' ;
-	shift        Student.Std_Shift%TYPE := '&Shift';
-	branch       Student.Std_Branch%TYPE := '&Branch';
+	shift        Student.Std_Shift%TYPE ;
+	branch       Student.Std_Branch%TYPE ;
 	email        Student.Std_Email%TYPE := '&Email'; 
 
 BEGIN
@@ -102,7 +100,7 @@ BEGIN
 	roll := TO_NUMBER(input_roll);
 	class_ := TO_NUMBER(input_class);
 	
-	UpdateSite2.Update_Student(student_id,roll,INITCAP(name),class_,UPPER(sec),INITCAP(shift),INITCAP(branch),email);
+	UpdateSite2.Update_Student(student_id,roll,INITCAP(name),class_,UPPER(sec),email);
 	
 	EXCEPTION
 		WHEN VALUE_ERROR THEN
@@ -113,3 +111,7 @@ BEGIN
 END;
 /
 commit;
+
+CREATE OR REPLACE VIEW All_Student AS
+SELECT * FROM Student UNION  SELECT * FROM Student@Site2;
+select * from All_Student;

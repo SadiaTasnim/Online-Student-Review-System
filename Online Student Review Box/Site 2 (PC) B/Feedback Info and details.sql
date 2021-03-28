@@ -100,10 +100,7 @@ BEGIN
 	   Select std_ClassRoll,std_Class,Std_Section,Branch,EmployeeID,Review,Date_ into
 	   feedback_std_roll_,feedback_std_class_ ,feedback_std_sec_,feedback_std_branch_,feedback_emp_id_,feedback_review_,feedback_date_ from
 	   Final_Feedback WHERE FeedbackID = feedback_id_ ;
-	  
-	   DBMS_OUTPUT.PUT_LINE(feedback_std_roll_);
-	   DBMS_OUTPUT.PUT_LINE(feedback_std_class_);
-	   DBMS_OUTPUT.PUT_LINE(feedback_std_sec_);DBMS_OUTPUT.PUT_LINE(feedback_std_branch_);
+	
 	   FOR R IN (SELECT * FROM All_Student WHERE std_ClassRoll = feedback_std_roll_ AND 
 	                                             Std_Class = feedback_std_class_ AND
 												 Std_Section = feedback_std_sec_ AND
@@ -111,7 +108,7 @@ BEGIN
 												 LOOP
 	   feedback_student_id := R.StudentID;
 	   END LOOP;
-       DBMS_OUTPUT.PUT_LINE(feedback_student_id);
+   
 	   Select StudentID,std_ClassRoll,Std_Name,Std_Class,Std_Section,Std_Shift,Std_Branch,Std_Email into 
 	          student_id ,std_roll,std_name,std_Class,std_sec,std_shift,std_branch,std_email from
 			  All_Student where StudentID = feedback_student_id ;

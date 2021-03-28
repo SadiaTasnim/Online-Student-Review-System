@@ -41,6 +41,10 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    SELECT COUNT(*) INTO row_no FROM Student@site1;
 		    student_id := 'M' || TO_CHAR(row_no+1);
             INSERT INTO Student@site1 VALUES(student_id,roll,name,class_,sec,shift,branch,email);
+		ELSE
+			DBMS_OUTPUT.PUT_LINE('--------------------------');
+			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
+			DBMS_OUTPUT.PUT_LINE('--------------------------');
         END IF;	
 	
 	END Insert_Student;
@@ -65,7 +69,10 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    SELECT COUNT(*) INTO row_no FROM Employee@site1;
 		    employee_id := 'M' || TO_CHAR(row_no+1);
             INSERT INTO Employee@site1 VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email); 
-	
+		ELSE
+			DBMS_OUTPUT.PUT_LINE('--------------------------');
+			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
+			DBMS_OUTPUT.PUT_LINE('--------------------------');
         END IF; 
 		
 	END Insert_Employee;
@@ -94,7 +101,10 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    feedback_id := 'M' || TO_CHAR(row_no+1);
 			INSERT INTO Feedback_Details@site1 VALUES(feedback_id,feedback_std_roll,feedback_std_class,feedback_std_sec,feedback_emp_id,feedback_std_branch,feedback_date);
 		    INSERT INTO Feedback@site1 VALUES(feedback_id,feedback_review);
-            
+        ELSE
+			DBMS_OUTPUT.PUT_LINE('--------------------------');
+			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
+			DBMS_OUTPUT.PUT_LINE('--------------------------');   
         END IF;			
 	END Insert_Feedback;
 
@@ -103,3 +113,113 @@ END InsertSite2;
 /
 
 
+/*check branch name*/
+
+CREATE OR REPLACE PACKAGE branchname_check AS
+	FUNCTION check_motijheel(branch IN Student.Std_Branch%TYPE )
+	RETURN NUMBER;
+	FUNCTION check_banasree(branch IN Student.Std_Branch%TYPE )
+	RETURN NUMBER;
+END branchname_check;
+/
+
+
+CREATE OR REPLACE PACKAGE BODY branchname_check AS
+	FUNCTION check_motijheel(branch IN Student.Std_Branch%TYPE)
+	RETURN NUMBER
+	IS
+    m varchar2(2);
+	total_m INT;
+	BEGIN
+		total_m:=0;
+	    select REGEXP_SUBSTR(branch,'M') into m from dual;
+		IF m = 'M' THEN total_m := total_m + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'o') into m from dual;
+		IF m = 'o' THEN total_m := total_m + 1; END IF;
+	    
+		select REGEXP_SUBSTR(branch,'t') into m from dual;
+		IF m = 't' THEN total_m := total_m + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'i') into m from dual;
+		IF m = 'i' THEN total_m := total_m + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'j') into m from dual;
+		IF m = 'j' THEN total_m := total_m + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'h') into m from dual;
+		IF m = 'h' THEN total_m := total_m + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'e') into m from dual;
+		IF m = 'e' THEN total_m := total_m + 1; END IF;
+	    
+		select REGEXP_SUBSTR(branch,'l') into m from dual;
+		IF m = 'l' THEN total_m := total_m + 1; END IF;
+		
+		IF total_m>=5 THEN 
+		    RETURN 1;
+		ELSE RETURN 0;
+		END IF;
+		
+		
+	END check_motijheel;
+	
+	
+	FUNCTION check_banasree(branch IN Student.Std_Branch%TYPE)
+	RETURN NUMBER
+	IS
+    m varchar2(2);
+	total_b INT;
+	BEGIN
+		total_b:=0;
+	    select REGEXP_SUBSTR(branch,'B') into m from dual;
+		IF m = 'B' THEN total_b := total_b + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'a') into m from dual;
+		IF m = 'a' THEN total_b := total_b + 1; END IF;
+	    
+		select REGEXP_SUBSTR(branch,'n') into m from dual;
+		IF m = 'n' THEN total_b := total_b + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'a') into m from dual;
+		IF m = 'a' THEN total_b := total_b + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'s') into m from dual;
+		IF m = 's' THEN total_b := total_b + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'r') into m from dual;
+		IF m = 'r' THEN total_b := total_b + 1; END IF;
+		
+		select REGEXP_SUBSTR(branch,'e') into m from dual;
+		IF m = 'e' THEN total_b := total_b + 1; END IF;
+	    
+
+		
+		IF total_b>=4 THEN 
+		    RETURN 1;
+		ELSE RETURN 0;
+		END IF;
+		
+		
+	END check_banasree;
+	
+	
+	
+
+END branchname_check;
+/
+
+
+/*
+DECLARE
+	total_m NUMBER;
+	total_b NUMBER;
+BEGIN
+    total_m := branchname_check.check_motijheel('motejil');
+	total_b := branchname_check.check_banasree('onosri');
+	DBMS_OUTPUT.PUT_LINE(total_m);
+	DBMS_OUTPUT.PUT_LINE(total_b);
+END;
+/
+
+*/

@@ -8,20 +8,20 @@ DECLARE
 	emp_shift          Employee.Emp_Shift%TYPE :='&Shift';
 	emp_branch         Employee.Emp_Branch%TYPE :='&Branch';
 	emp_email          Employee.Emp_Email%TYPE :='&Email' ;
-    contain_m          VARCHAR2(10);
-	contain_b          VARCHAR2(10);
+    total_m            NUMBER;
+	total_b            NUMBER;
 BEGIN
 
     emp_branch := INITCAP(emp_branch);
 	
-	select REGEXP_SUBSTR(emp_branch,'Mot') into contain_m from dual;
-	select REGEXP_SUBSTR(emp_branch,'Ban') into contain_b from dual;
+	total_m := branchname_check.check_motijheel(emp_branch);
+	total_b := branchname_check.check_banasree(emp_branch);
 	
 	/*Check if Motijheel or Banasree*/
-	IF contain_m='Mot' THEN
+	IF total_m = 1 and total_b = 0 THEN
 	   emp_branch:='Motijheel';
-	ELSIF contain_b='Ban' THEN
-	   emp_branch:='Banasree';
+	ELSIF total_m = 0 and total_b = 1 THEN
+	   emp_branch:='Banasree';   
 	END IF;
 	
 	InsertSite2.Insert_Employee(INITCAP(emp_name),INITCAP(designation),INITCAP(emp_shift),INITCAP(emp_branch),emp_email);

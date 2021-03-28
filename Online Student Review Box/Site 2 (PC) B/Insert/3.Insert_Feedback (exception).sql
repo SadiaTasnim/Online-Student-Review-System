@@ -17,34 +17,31 @@ DECLARE
 	feedback_emp_id       Feedback_Details.EmployeeID%TYPE :='&Employee_ID';
 	feedback_std_branch   Feedback_Details.Branch%TYPE :='&Branch';
 	feedback_review       Feedback.Review%TYPE :='&Review';
-    contain_m             VARCHAR2(10);
-	contain_b             VARCHAR2(10);
+    total_m               NUMBER;
+	total_b               NUMBER;
 	row_no                INT;
 BEGIN
 
     feedback_std_branch := INITCAP(feedback_std_branch);
 	
-	select REGEXP_SUBSTR(feedback_std_branch,'Mot') into contain_m from dual;
-	select REGEXP_SUBSTR(feedback_std_branch,'Ban') into contain_b from dual;
+	total_m := branchname_check.check_motijheel(feedback_std_branch);
+	total_b := branchname_check.check_banasree(feedback_std_branch);
 	
 	/*Check if Motijheel or Banasree*/
-	IF contain_m='Mot' THEN
+	IF total_m = 1 and total_b = 0 THEN
 	   feedback_std_branch:='Motijheel';
-	ELSIF contain_b='Ban' THEN
+	ELSIF total_m = 0 and total_b = 1 THEN
 	   feedback_std_branch:='Banasree';
 	END IF;
 	
 	/*Check if class and roll is integer or not*/
 	feedback_std_roll := TO_NUMBER(input_roll);
 	feedback_std_class := TO_NUMBER(input_class);
-	DBMS_OUTPUT.PUT_LINE(feedback_std_class);
-	DBMS_OUTPUT.PUT_LINE(feedback_std_roll);
-	DBMS_OUTPUT.PUT_LINE(feedback_std_sec);
-	DBMS_OUTPUT.PUT_LINE(feedback_std_branch);
+
 	/* Check if the student if in database or not */
 	SELECT COUNT(*) INTO row_no FROM All_Student where std_ClassRoll = feedback_std_roll AND Std_Class = feedback_std_class AND
                                                        Std_Section = UPPER(feedback_std_sec)AND Std_Branch = feedback_std_branch ;
-	DBMS_OUTPUT.PUT_LINE(row_no);
+
 	IF row_no >0 THEN 
 	  InsertSite2.Insert_Feedback(feedback_std_roll,feedback_std_class,UPPER(feedback_std_sec),UPPER(feedback_emp_id),INITCAP(feedback_std_branch),feedback_review);
     ELSE

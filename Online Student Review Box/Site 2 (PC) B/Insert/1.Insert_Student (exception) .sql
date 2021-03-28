@@ -12,20 +12,19 @@ DECLARE
 	shift        Student.Std_Shift%TYPE := '&Shift';
 	branch       Student.Std_Branch%TYPE := '&Branch';
 	email        Student.Std_Email%TYPE := '&Email'; 
-	contain_m    VARCHAR2(10);
-	contain_b    VARCHAR2(10);
+	total_m      NUMBER;
+	total_b      NUMBER;
 BEGIN
 
     branch := INITCAP(branch);
-	
-	select REGEXP_SUBSTR(branch,'Mot') into contain_m from dual;
-	select REGEXP_SUBSTR(branch,'Ban') into contain_b from dual;
-	
 	/*Check if Motijheel or Banasree*/
-	IF contain_m='Mot' THEN
+	total_m := branchname_check.check_motijheel(branch);
+	total_b := branchname_check.check_banasree(branch);
+
+	IF total_m = 1 and total_b = 0 THEN
 	   branch:='Motijheel';
-	ELSIF contain_b='Ban' THEN
-	   branch:='Banasree';
+	ELSIF total_m = 0 and total_b = 1 THEN
+	   branch:='Banasree';   
 	END IF;
 	
 	/*Check if class and roll is integer or not*/
