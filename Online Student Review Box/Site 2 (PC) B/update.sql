@@ -112,6 +112,7 @@ END;
 /
 commit;
 
+/*
 CREATE OR REPLACE VIEW All_Student AS
-SELECT * FROM Student UNION  SELECT * FROM Student@Site2;
-select * from All_Student;
+SELECT * FROM Student UNION  SELECT * FROM Student@Site1;
+select * from All_Student; */

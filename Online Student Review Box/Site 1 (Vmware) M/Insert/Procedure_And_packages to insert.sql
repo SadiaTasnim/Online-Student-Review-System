@@ -3,7 +3,7 @@ SET VERIFY OFF;
 SET linesize 200;
 SET pagesize 200;
 ---------package created for insert in Student and Employee
-CREATE OR REPLACE PACKAGE InsertSite2 AS
+CREATE OR REPLACE PACKAGE Insertsite1 AS
 	PROCEDURE Insert_Student(roll IN Student.std_ClassRoll%TYPE ,name IN Student.Std_Name%TYPE ,
 							class_ IN Student.Std_Class%TYPE ,sec IN Student.Std_Section%TYPE ,
 							shift IN Student.Std_Shift%TYPE ,branch IN Student.Std_Branch%TYPE ,
@@ -16,11 +16,11 @@ CREATE OR REPLACE PACKAGE InsertSite2 AS
 	PROCEDURE Insert_Feedback(feedback_std_roll IN Feedback_Details.std_ClassRoll%TYPE ,feedback_std_class IN Feedback_Details.Std_Class%TYPE ,
 	                          feedback_std_sec IN Feedback_Details.Std_Section%TYPE ,feedback_emp_id  IN Feedback_Details.EmployeeID%TYPE ,
 	                          feedback_std_branch  IN Feedback_Details.Branch%TYPE ,feedback_review IN Feedback.Review%TYPE);
-END InsertSite2;
+END Insertsite1;
 /
 
 ---------Created package body
-CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
+CREATE OR REPLACE PACKAGE BODY Insertsite1 AS
 	
     ----function to insert in student table
 	
@@ -38,9 +38,9 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
             INSERT INTO Student VALUES(student_id,roll,name,class_,sec,shift,branch,email);
 			
         ELSIF branch = 'Motijheel' THEN
-		    SELECT COUNT(*) INTO row_no FROM Student@site1;
+		    SELECT COUNT(*) INTO row_no FROM Student@site2;
 		    student_id := 'M' || TO_CHAR(row_no+1);
-            INSERT INTO Student@site1 VALUES(student_id,roll,name,class_,sec,shift,branch,email);
+            INSERT INTO Student@site2 VALUES(student_id,roll,name,class_,sec,shift,branch,email);
 		ELSE
 			DBMS_OUTPUT.PUT_LINE('--------------------------');
 			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
@@ -66,9 +66,9 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
             INSERT INTO Employee VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email);
 		
         ELSIF emp_branch  = 'Motijheel' THEN
-		    SELECT COUNT(*) INTO row_no FROM Employee@site1;
+		    SELECT COUNT(*) INTO row_no FROM Employee@site2;
 		    employee_id := 'M' || TO_CHAR(row_no+1);
-            INSERT INTO Employee@site1 VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email); 
+            INSERT INTO Employee@site2 VALUES(employee_id,emp_name,designation,emp_shift,emp_branch,emp_email); 
 		ELSE
 			DBMS_OUTPUT.PUT_LINE('--------------------------');
 			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
@@ -97,10 +97,10 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 		    INSERT INTO Feedback VALUES(feedback_id,feedback_review);
            
         ELSIF feedback_std_branch = 'Motijheel' THEN
-		    SELECT COUNT(*) INTO row_no FROM Feedback_Details@site1;
+		    SELECT COUNT(*) INTO row_no FROM Feedback_Details@site2;
 		    feedback_id := 'M' || TO_CHAR(row_no+1);
-			INSERT INTO Feedback_Details@site1 VALUES(feedback_id,feedback_std_roll,feedback_std_class,feedback_std_sec,feedback_emp_id,feedback_std_branch,feedback_date);
-		    INSERT INTO Feedback@site1 VALUES(feedback_id,feedback_review);
+			INSERT INTO Feedback_Details@site2 VALUES(feedback_id,feedback_std_roll,feedback_std_class,feedback_std_sec,feedback_emp_id,feedback_std_branch,feedback_date);
+		    INSERT INTO Feedback@site2 VALUES(feedback_id,feedback_review);
         ELSE
 			DBMS_OUTPUT.PUT_LINE('--------------------------');
 			DBMS_OUTPUT.PUT_LINE('Branch name incorrect : Motijheel / Banasree');
@@ -109,7 +109,7 @@ CREATE OR REPLACE PACKAGE BODY InsertSite2 AS
 	END Insert_Feedback;
 
 
-END InsertSite2;
+END Insertsite1;
 /
 
 

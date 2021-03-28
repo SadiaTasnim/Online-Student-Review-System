@@ -1,0 +1,9 @@
+ipconfig /release
+ipconfig /flushdns
+ipconfig /renew
+netsh int ip set dns
+netsh winsock reset
+
+
+192.168.0.7
+192.168.182.128

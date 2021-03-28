@@ -141,7 +141,7 @@ BEGIN
 		WHEN NO_DATA_FOUND THEN
 		    DBMS_OUTPUT.PUT_LINE(CHR(13)||CHR(13));
 		    DBMS_OUTPUT.PUT_LINE('----------------------------------');
-			DBMS_OUTPUT.PUT_LINE('Please Enter a valid ID');
+			DBMS_OUTPUT.PUT_LINE('Invalid ID');
 			DBMS_OUTPUT.PUT_LINE('----------------------------------');
 
 	
