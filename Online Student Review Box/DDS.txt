@@ -24,4 +24,25 @@ see all staff info
 see all feedback according to date----------canteen,library,office management
                                   ----------give feedback id
                                   ----------see all info of the staff and student
-         
+      
+
+
+create database,trigger,package
+
+feedback info and details : employee if :m14
+                            date : 24-MAR-21
+                            roll : 16
+                            class : 9
+                            sec : b
+                             
+
+
+employee details :    name -------rahman    / salam khan
+                      designation -----headmaster
+
+update       :  name ------ mim
+
+insert feedback --- roll 1
+                ----class 8
+                -----sec c
+                ------branch - banasree
