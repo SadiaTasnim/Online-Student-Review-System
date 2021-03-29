@@ -78,7 +78,7 @@ INSERT INTO Employee VALUES('B02','Arafat Mojumber','Teacher','Morning','Banasre
 INSERT INTO Employee VALUES('B03','Yaseen Arafat','Teacher','Morning','Banasree','yaseenahmed@gmail.com');
 INSERT INTO Employee VALUES('B04','Rafat Hasmi','Physical Director','Morning','Banasree','rahathasmi@gmail.com');
 INSERT INTO Employee VALUES('B05','Fakhrul Islam','Security Gaurd','Morning','Banasree','fakhrulislam@gmail.com');
-INSERT INTO Employee VALUES('B06','Salam Khan','Headmaster','Morning','Motijheel','salamkhan@gmail.com');
+INSERT INTO Employee VALUES('B06','Salam Khan','Headmaster','Day','Motijheel','salamkhan@gmail.com');
 INSERT INTO Employee VALUES('B07','Abu Jafor','Headmaster','Morning','Motijheel','abujafor290@gmail.com');
 INSERT INTO Employee VALUES('B08','Md. Kamruz zaman','Senior Teacher','Morning','Banasree','kamruzzaman@gmail.com');
 INSERT INTO Employee VALUES('B09','Dr. Shahanara Begum','Principle','Morning','Motijheel','shahanara123@gmail.com');
@@ -109,7 +109,7 @@ INSERT INTO Feedback_Details VALUES('B07',8,8,'C','B17','Banasree','11-FEB-21');
 INSERT INTO Feedback_Details VALUES('B08',8,8,'C','B18','Banasree','17-DEC-20');
 INSERT INTO Feedback_Details VALUES('B09',9,8,'C','B20','Banasree','28-MAR-21');
 INSERT INTO Feedback_Details VALUES('B10',1,8,'C','B08','Banasree','21-DEC-20');
-INSERT INTO Feedback_Details VALUES('B11',2,8,'C','B19','Banasree','24-MAR-21');
+INSERT INTO Feedback_Details VALUES('B11',2,8,'C','B12','Banasree','24-MAR-21');
 INSERT INTO Feedback_Details VALUES('B12',3,8,'C','B14','Banasree','23-FEB-21');
 INSERT INTO Feedback_Details VALUES('B13',1,8,'C','B17','Banasree','23-MAR-21');
 INSERT INTO Feedback_Details VALUES('B14',2,8,'C','B17','Banasree','1-FEB-21');

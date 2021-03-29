@@ -1,3 +1,4 @@
+clear screen;
 SET SERVEROUTPUT ON;
 SET VERIFY OFF;
 SET linesize 200;
